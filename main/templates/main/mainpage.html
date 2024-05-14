@@ -3,9 +3,10 @@
 <link
   rel="stylesheet"
   type="text/css"
-  href="{% static 'css/main/main_page.css'%}"
+  href="{% static 'css/main/main_page.css'%}?after"
 />
-<div id='product_lst_container'>
+
+<div id='product_lst_container'> <!-- 카테고리 선택 -->
   <div id='new_product_lst'>
     <button class='product_lst_item'>인기신상랭킹</button>
     <button class='product_lst_item'>입점특가</button>
@@ -16,32 +17,76 @@
     <button class='product_lst_item'>패션잡화</button>
   </div>
 </div>
-<body>
-  <div id='main_box'>
-
+<div class='screen' id='main_screen'>
+  <div id='main_page_container'> <!--width 220px-->
+    <div id='filter_container'> <!--사이드 바-->
+      <div id='filter'>
+        <div id='filter_text'>필터</div>
+        <div>
+          <img src="{% static 'assets/icons/reset.svg' %}" id='reset_img'/>
+          <button id='reset'>초기화</button>
+        </div>
+      </div>
+      <div id='category'>
+        <div id='category_container'>
+          <div id='category_text'>카테고리</div>
+          <div>
+            <button id='up'>
+              <img src="{% static 'assets/icons/up.svg' %}" id='up_img'/>
+            </button>
+          </div>
+        </div>
+        <div id='category_box'>
+          <label for="skin_care">
+            <input type="checkbox" name="group" id="skin_care" />
+            스킨케어·메이크업 <p class='product_num'>xx</p>
+          </label>
+          <label for="luxury">
+            <input type="checkbox" name="group" id="luxury" />
+            럭셔리뷰티 <p class='product_num'>xx</p>
+          </label>
+          <label for="snack">
+            <input type="checkbox" name="group" id="snack" />
+            간식·과자·떡 <p class='product_num'>xx</p>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div id='main_bar'> <!-- width 783px-->
+      <div id='sorting_bar'> <!-- 정렬 파트 -->
+        <div>총 xx건</div>
+        <div id='sorting_how'>
+          <button class='sorting_btn' id='clicked_soring_btn'>추천순</button>
+          <button class='sorting_btn'>신상품순</button>
+          <button class='sorting_btn'>판매량순</button>
+          <button class='sorting_btn'>혜택순</button>
+          <button class='sorting_btn'>낮은 가격순</button>
+          <button class='sorting_btn'>높은 가격순</button>
+        </div>
+      </div>
+      <div id='item_list'> <!--물건 보여주는 부분-->
+        {% for product in products %}
+        <div class='item'>
+          <img src="{{product.image_url}}" style="width: 100px" 
+          class='product_img'/>
+          <div class='shopping_button'>
+            <button>
+              <img src="{% static 'assets/icons/cart.svg' %}" id='cart_img'/>담기
+            </button>
+          </div>
+          <a href="product/{{product.id}}">
+            <p id='delivery_company'>샛별배송<p> 
+            <p id='product_name'>{{product}}</p>
+            <p id='description'>{{product.description}}</p>
+            <p id='origin_price'>{{product.origin_price}}원</p>
+            <p id='discount_rate'>{{product.discount_rate}}%</p>
+            <p id='discount_price'>{{product.discount_price}}원</p>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
   </div>
-</body>
-<!-- 코드 작성시, 아래 부분(script 태그 이전)은 전체 삭제하고 작성하세요 -->
-
-<!----------------tip!---------------->
-<!-- 상품 데이터베이스는 프로젝트에 넣어뒀어요 -->
-<!-- 아래와 같은 형식으로 for문을 사용하여 작성하세요 -->
-
-<!-- 데이터 사용 예시 -->
-<div style="display: flex">
-  {% for product in products %}
-  <a href="product/{{product.id}}">
-    <img src="{{product.image_url}}" style="width: 100px" />
-    <p>{{product}}</p>
-    <p>{{product.description}}</p>
-    <p>{{product.origin_price}}원</p>
-    <p>{{product.discount_rate}}%</p>
-    <p>{{product.discount_price}}원</p>
-  </a>
-  {% endfor %}
 </div>
-<!-- 데이터 사용 예시 -->
-
-<!-- js 파일 -->
 <script src="{% static 'js/main/main_page.js'%}"></script>
 {% endblock %}
