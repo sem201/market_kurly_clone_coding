@@ -1,7 +1,7 @@
 /* main page - JS */
 /*초기화 버튼 눌렀을 때 체크 박스 삭제*/
 
-console.log('연결?')
+console.log('연결')
 /* total product 변경*/
 const total_product = document.getElementById('total_product');
 

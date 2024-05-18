@@ -9,13 +9,42 @@
     <div id='product_image_container'>
       <img id='product_image' src="{{product.image_url}}"/>
     </div>
-    <div id='product_detail'>
-      <p id='delivery_company'>샛별배송<p> 
+    <div id='product_detail_container'>
+      <div id='product_detail'>
+        <p class='gray_text'>샛별배송<p> 
         <p id='product_name'>{{product}}</p>
-        <p id='description'>{{product.description}}</p>
-        <p id='origin_price'>{{product.origin_price}}원</p>
         <p id='discount_rate'>{{product.discount_rate}}%</p>
         <p id='discount_price'>{{product.discount_price}}원</p>
+      </div>
+      <div id='product_information_container'>
+        <div class='product_information'>
+          <p class='gray_text'>안내사항</p>
+        </div>
+        <div class='product_information'>
+          <p>식품 특성상 중량은 3% 내외의 차이가 발생할 수 있습니다.</p>
+          <p>신선식품 특성상 원물마다 크기 형태가 일정하지 않을 수 있습니다.</p>
+        </div>
+      </div>
+      <div id='product_choose_container'>
+        <div class='product_choose'>
+          <p class='gray_text'>상품 선택</p>
+        </div>
+        <div>
+          <p>[선물세트] 유명산지 사과세트 3.6kg (12입)<p>
+          <div class='product_choose' id='product_num'>
+            <button>-</button>
+            <p id='ss'>1</p>
+            <button>+</button>
+          </div>
+        </div>
+      </div>
+      <div id='total_price_container'>
+        <p id='total_price'>총 상품 금액:</p>
+        <p id='product_total_price'>158,000원</p>
+      </div>
+      <div id='login_btn_container'>
+        <button id='login_btn'>로그인</button>
+      </div>
     </div>
   </div>
 </div>
