@@ -121,11 +121,11 @@
     flex-wrap: wrap;
 }
 .item{
-    display: flex;
     width:249px;
     border:1px solid black;
     flex-direction: column;
     gap: 6px;
+    margin-top: 32px;
     display: none;
 }
 .item:nth-child(-n+3) {
@@ -199,8 +199,6 @@
 }
 #discount_price{
     color: var(--font-font-1, #333);
-
-/* B1-bold */
     font-family: Pretendard;
     font-size: 16px;
     font-style: normal;
@@ -208,3 +206,35 @@
     line-height: 24px; /* 150% */
     display: inline-block;
 }
+
+#filter_lst_container{
+    display: none;
+    width: 783px;
+    padding: 20px 16px 18px 16px;
+    gap: 16px;
+    border: 1px solid var(--stroke-stroke-2, #E2E2E2);
+    background: #FFF;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.10);
+}
+
+#skin_care_text{
+    color:#5E0080;
+    display:none;
+}
+#luxury_text{
+    color:#5E0080;
+    display:none;
+}
+#snack_text{
+    color:#5E0080;
+    display:none;
+}
+
+.close_btn{
+    display: flex;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+}
+

@@ -38,23 +38,23 @@
         </div>
         <div id='category_box'>
           <label for="skin_care">
-            <input type="checkbox" name="group" id="skin_care" />
-            스킨케어·메이크업 <p class='product_num'>xx</p>
+            <input type="checkbox" name="group" id="skin_care" value='68'/>
+            스킨케어·메이크업 <p class='product_num'>68</p>
           </label>
           <label for="luxury">
-            <input type="checkbox" name="group" id="luxury" />
-            럭셔리뷰티 <p class='product_num'>xx</p>
+            <input type="checkbox" name="group" id="luxury" value='40'/>
+            럭셔리뷰티 <p class='product_num'>40</p>
           </label>
           <label for="snack">
-            <input type="checkbox" name="group" id="snack" />
-            간식·과자·떡 <p class='product_num'>xx</p>
+            <input type="checkbox" name="group" id="snack" value='28'/>
+            간식·과자·떡 <p class='product_num'>28</p>
           </label>
         </div>
       </div>
     </div>
     <div id='main_bar'> <!-- width 783px-->
       <div id='sorting_bar'> <!-- 정렬 파트 -->
-        <div>총 xx건</div>
+        <div id='total_product'>총 xx건</div>
         <div id='sorting_how'>
           <button class='sorting_btn' id='clicked_soring_btn'>추천순</button>
           <button class='sorting_btn'>신상품순</button>
@@ -62,6 +62,24 @@
           <button class='sorting_btn'>혜택순</button>
           <button class='sorting_btn'>낮은 가격순</button>
           <button class='sorting_btn'>높은 가격순</button>
+        </div>
+      </div>
+      <div id='filter_lst_container'>
+        <div id='skin_care_text'>스킨케어·메이크업
+          <button id='skin_care_delbtn'>
+            <img src="{% static 'assets/icons/close.svg' %}" class='close_btn'/>
+          </button>
+        </div>
+        <div id='luxury_text'>럭셔리뷰티
+          <button id='luxury_delbtn'>
+            <img src="{% static 'assets/icons/close.svg' %}" class='close_btn'/>
+          </button>
+        </div>
+        <div id='snack_text'>간식·과자·떡
+          <button id='snack_delbtn'>
+            <img src="{% static 'assets/icons/close.svg' %}" class='close_btn'/>
+
+          </button>
         </div>
       </div>
       <div id='item_list'> <!--물건 보여주는 부분-->

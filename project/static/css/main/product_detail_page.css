@@ -1,1 +1,18 @@
 /* product detail page - CSS */
+#screen{
+    display: flex;
+    justify-content: center;
+}
+#container{
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    width:50%;
+    align-self: stretch;
+    border:1px solid black;
+}
+#product_image{
+    width: 430px;
+    height: 550px;
+}
+
