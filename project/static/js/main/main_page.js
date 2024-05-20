@@ -1,7 +1,6 @@
 /* main page - JS */
 /*초기화 버튼 눌렀을 때 체크 박스 삭제*/
 
-console.log('연결')
 /* total product 변경*/
 const total_product = document.getElementById('total_product');
 
@@ -81,7 +80,6 @@ const cre_snackfilter=()=>{
             snack_filter_box.style.display='none';
         }
         if(ischecked.length==0){
-            console.log("이거 되는거임?")
             filter_box.style.display='none';
         } 
     }

@@ -24,6 +24,9 @@
     letter-spacing: -1px;
     width:15%;
 }
+.product_lst_item:hover{
+    color:#5E0080;
+}
 #main_page_container{
     margin-top: 50px;
     height:100%;
