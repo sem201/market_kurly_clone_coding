@@ -17,18 +17,6 @@ const update_total_product=()=>{
     }
 }
 
-/*초기화 버튼 눌렀을 때 체크 박스 삭제*/
-// const reset_btn= document.getElementById("reset");
-// const reset=()=>{
-//     const checkboxes=document.querySelectorAll("input[type='checkbox'][name='group']")
-//     checkboxes.forEach((checkbox)=>{
-//         checkbox.checked=false;
-//         }
-//     )
-// }
-// reset_btn.addEventListener('click',reset);
-// reset_btn.addEventListener('click',update_total_product);
-
 // /*카테고리 버튼 누를떄 필터 생성*/
 // const skin_care_checkbox=document.getElementById("skin_care");
 // const skin_care_filter_box=document.getElementById("skin_care_text");
@@ -130,6 +118,22 @@ const insert_arr = (checkbox, filter_box_element) => {
     updateFilterBox();
     update_total_product();
 };
+
+/*초기화 버튼 눌렀을 때 체크 박스 삭제*/
+const reset_btn= document.getElementById("reset");
+const reset=()=>{
+    const checkboxes=document.querySelectorAll("input[type='checkbox'][name='group']")
+    checkboxes.forEach((checkbox)=>{
+        checkbox.checked=false;
+        }
+    )
+}
+reset_btn.addEventListener('click',reset);
+reset_btn.addEventListener('click',()=>insert_arr(skin_care_checkbox, skin_care_filter_box))
+reset_btn.addEventListener('click',()=>insert_arr(luxury_checkbox, luxury_filter_box))
+reset_btn.addEventListener('click',()=>insert_arr(snack_checkbox, snack_filter_box))
+reset_btn.addEventListener('click',update_total_product);
+
 /*x버튼 눌렀을 떄 카테고리 지우기*/
 skin_care_checkbox.addEventListener('change', () => insert_arr(skin_care_checkbox, skin_care_filter_box));
 luxury_checkbox.addEventListener('change', () => insert_arr(luxury_checkbox, luxury_filter_box));
@@ -158,3 +162,4 @@ const delete_snack_category=()=>{
 }
 del_snackbtn.addEventListener('click',delete_snack_category);
 del_snackbtn.addEventListener('click',()=> insert_arr(snack_checkbox,snack_filter_box));
+
