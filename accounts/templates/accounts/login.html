@@ -1,6 +1,49 @@
 <!-- 임시 로그인 페이지 -->
 {% extends 'base.html' %} {% block content %}
-<div class="container">
-  <h2>로그인</h2>
+{% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/accounts/login.css'%}"
+/>
+<div class='screen'>
+  <form class="loginview" action="{% url 'accounts:login' %}" method="POST">
+    {% csrf_token %}
+    <div id='login'>로그인</div>
+    <div class='input_container'>
+      <input type='text' placeholder='아이디를 입력해주세요' name='username' id='username' required>
+      <input type='password' placeholder='비밀번호를 입력해주세요' name='password' id='password' required>
+    </div>
+    <div id='find_container'>
+      <a href="/find_id">아이디 찾기</a>
+      <p>|</p>
+      <a href="/find_pw">비밀번호 찾기</a>
+    </div>
+    <div id='login_container'>
+      <button type="submit" id="login_input_btn" disabled>로그인</button>
+    </div>
+    <div id='signup_btn'><a href="/accounts/signup/">회원가입</a></div>
+  </form>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      const username = document.getElementById('username');
+      const password = document.getElementById('password');
+      const loginButton = document.getElementById('login_input_btn');
+  
+      function validateForm() {
+          const isUsernameValid = username.value.trim() !== '';
+          const isPasswordValid = password.value.trim() !== '';
+  
+          if (isUsernameValid && isPasswordValid) {
+              loginButton.disabled = false;
+          } else {
+              loginButton.disabled = true;
+          }
+      }
+  
+      username.addEventListener('input', validateForm);
+      password.addEventListener('input', validateForm);
+  });
+  </script>
 {% endblock %}

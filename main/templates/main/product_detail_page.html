@@ -49,6 +49,62 @@
   </div>
 </div>
 <!-- 데이터 사용 예시 -->
-
+<form action='create_comment/', method='POST'>
+  {% csrf_token %}
+  <select name='star'>
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+    <option value='3'>3</option>
+    <option value='4'>4</option>
+    <option value='4'>5</option>
+  </select>
+  <input type='textarea' value = '' name ='content' id = 'comment_text333'/>
+  <input disabled type='submit' value='등록' id ='submit_btn3'/>
+</form>
 <script src="{% static 'js/main/product_detail_page.js'%}"></script>
+<div class="screen">
+  <div
+    style="
+      width: 1050px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 0px;
+    "
+  >
+    {% for comment in comments %}
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 8px;
+        border-bottom: solid 1px #d9d9d9;
+      "
+    >
+      <div style="display: flex; justify-content: space-between">
+        <p>평점:{{comment.star}}</p>
+        <a href="{% url 'main:delete_comment' comment.id %}">삭제</a>
+      </div>
+      <p class="B1">{{comment.content}}</p>
+    </div>
+    {% endfor%}
+  </div>
+</div>
+<script>
+  const submit_button = document.getElementById("submit_btn3")
+  const text_area = document.getElementById("comment_text333")
+console.log(text_area)
+  text_area.addEventListener('input',() => {
+    console.log(text_area.value)
+      if(text_area.value===''){
+          submit_button.disabled = true;
+          submit_button.style.backgroundColor='#dddddd'
+      }
+      else{
+          submit_button.disabled = false;
+          submit_button.style.backgroundColor='#5e0080'
+      }
+  })
+</script>
 {% endblock %}

@@ -1,6 +1,68 @@
 <!-- 임시 회원가입 페이지 -->
 {% extends 'base.html' %} {% block content %}
-<div class="container">
-  <h2>회원가입</h2>
+{% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/accounts/signup.css'%}"
+/>
+
+<div class='screen'>
+    <form id='signup_form' action="{% url 'accounts:signup'%}" method="POST">
+      {% csrf_token %}
+      <div id='signup_text'>회원가입</div>
+      <hr class='hr_1'></hr>
+        <div class='input_container'>
+          <p class='input_text'>아이디</p>
+          <input type='text' placeholder='아이디를 입력해주세요' name='username' id='username' required>
+        </div>
+        <div class='input_container'>
+          <p class='input_text'>비밀번호</p>
+          <input type='password' placeholder='비밀번호를 입력해주세요' name='password' id='password' required>
+        </div>
+        <ul id="pw_rule">
+          <li>⋅ 비밀번호를 8자 이상으로 작성해주세요.</li>
+          <li>⋅ 영문 대소문자, 숫자, 특수문자를 하나 이상포함해주세요.</li>
+          <li>⋅ 사용가능 특수문자 @!?-_</li>
+        </ul>
+        <div class='input_container'>
+          <p class='input_text'>비밀번호 확인</p>
+          <input type='password' placeholder='비밀번호를 한번 더 입력해주세요' name='password2' id='password_check' required>
+        </div>
+      <hr id='hr_2'></hr>
+      <div id='signup_btn_container'>
+        <button type='submit' id='signup_btn' disabled>가입하기</button>
+      </div>
+    </form>
 </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const username = document.getElementById('username');
+    const password = document.getElementById('password');
+    const passwordCheck = document.getElementById('password_check');
+    const signupBtn = document.getElementById('signup_btn');
+
+    function validatePassword(password) {
+        const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!?-_])[A-Za-z\d@!?-_]{8,}$/;
+        return regex.test(password);
+    }
+
+    function validateForm() {
+        const isUsernameValid = username.value.trim() !== '';
+        const isPasswordValid = password.value.trim() !== '' && validatePassword(password.value);
+        const isPasswordMatch = password.value === passwordCheck.value;
+
+        if (isUsernameValid && isPasswordValid && isPasswordMatch) {
+            signupBtn.disabled = false;
+        } else {
+            signupBtn.disabled = true;
+        }
+    }
+
+    username.addEventListener('input', validateForm);
+    password.addEventListener('input', validateForm);
+    passwordCheck.addEventListener('input', validateForm);
+});
+</script>
+
 {% endblock %}

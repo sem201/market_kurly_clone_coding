@@ -25,3 +25,5 @@ increase_btn.addEventListener('click',increase_num_product);
 increase_btn.addEventListener('click',update_total_price);
 decrease_btn.addEventListener('click',decrease_num_product);
 decrease_btn.addEventListener('click',update_total_price);
+
+
